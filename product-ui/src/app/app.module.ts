@@ -7,11 +7,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './product/product.component';
 import { ProductService } from './product.service';
+import { AddProductFormComponent } from './add-product-form/add-product-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent
+    ProductComponent,
+    AddProductFormComponent
   ],
   imports: [
     BrowserModule,

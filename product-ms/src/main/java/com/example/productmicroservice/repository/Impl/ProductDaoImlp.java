@@ -33,5 +33,35 @@ public class ProductDaoImlp implements IProductDao {
         return result;
     }
 
+    @Override
+    public List<Product> getProductByTerm(String term) {
+        Criteria criteria = new Criteria();
+        criteria.orOperator(Criteria.where("brand").is(term),Criteria.where("category").is(term),Criteria.where("brand").is(term));
+        Query query = new Query(criteria);
+        List<Product> products =  new ArrayList<>(mongoTemplate.find(query, Product.class));
+        List<Product> result = new ArrayList<>();
+        for (Product product : products) {
+            if(product.getQuantity()>0){
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public List<Product> filterProductsByPrice(Double gte, Double lte) {
+        Criteria criteria = new Criteria();
+        criteria.andOperator(Criteria.where("price").gte(gte), Criteria.where("price").lte(lte));
+        Query query = new Query(criteria);
+        List<Product> products =  new ArrayList<>(mongoTemplate.find(query, Product.class));
+        List<Product> result = new ArrayList<>();
+        for (Product product : products) {
+            if(product.getQuantity()>0){
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
     
 }

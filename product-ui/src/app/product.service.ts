@@ -22,5 +22,9 @@ export class ProductService {
     return this.http.get<Product[]>(`${this.productsUrl}/category/${this.category}`);
   }
 
+  saveProduct(product : Product): Observable<Object> {
+    return this.http.post<Product>(`${this.productsUrl}`,product);
+  }
+
   
 }

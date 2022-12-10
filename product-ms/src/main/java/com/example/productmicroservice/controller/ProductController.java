@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.productmicroservice.model.Product;
@@ -37,10 +38,17 @@ public class ProductController {
 		return ResponseEntity.ok().body(productService.getProductById(id));
 	}
 
-    @GetMapping("/category/{category}")
+    /*@GetMapping("/category/{category}")
 	public List<Product> getProductsByCategory(@PathVariable String category) throws IOException{
 		return productService.getProductsByCategory(category);
+	}*/
+
+	@GetMapping("/category")
+	public List<Product> getProductsByCategory(@RequestParam("category") String category) throws IOException{
+		return productService.getProductsByCategory(category);
 	}
+
+    
 	
 	@PostMapping
 	public ResponseEntity<Product> createProduct(@RequestBody Product product) throws IOException{

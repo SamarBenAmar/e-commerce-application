@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './product-list/product';
 
@@ -10,6 +10,7 @@ export class ProductService {
 
   private productsUrl = "http://localhost:8080/products";
   private category = "";
+  searchPageSize = 3;
 
   constructor(private http: HttpClient) { }
 
@@ -18,13 +19,19 @@ export class ProductService {
   }
 
   searchProductsByCategory(category: string): Observable<Product[]> {
-    this.category = category;
-    return this.http.get<Product[]>(`${this.productsUrl}/category/${this.category}`);
+    let params = new HttpParams();
+    params = params.append('category', category);
+    return this.http.get<Product[]>(`${this.productsUrl}/category`,{
+      params
+    });
   }
 
   saveProduct(product : Product): Observable<Object> {
     return this.http.post<Product>(`${this.productsUrl}`,product);
   }
+
+ 
+
 
   
 }

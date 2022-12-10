@@ -10,6 +10,9 @@ import { ProductService } from './product.service';
 import { AddProductFormComponent } from './add-product-form/add-product-form.component';
 
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { SearchProductListComponent } from './search-product-list/search-product-list.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { HeaderComponent } from './header/header.component';
     ProductComponent,
     AddProductFormComponent,
 
-    HeaderComponent
+    HeaderComponent,
+      FooterComponent,
+      SearchProductListComponent,
+      HomeComponent
   ],
   imports: [
     BrowserModule,

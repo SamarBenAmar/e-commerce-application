@@ -45,7 +45,7 @@ export class AddProductFormComponent implements OnInit {
       console.log(data);
     })
     console.log("Form Submitted !");
-    this.router.navigate(['/home']);
+    this.router.navigate(['']);
   }
 
 }

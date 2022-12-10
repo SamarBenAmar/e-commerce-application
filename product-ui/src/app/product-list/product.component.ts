@@ -30,11 +30,15 @@ export class ProductComponent implements OnInit {
   }
 
   searchProductsByCategory(category: string){
-      this.productService.searchProductsByCategory(category).subscribe(data => {
-        this.products = data;
-      })
-  }
+    this.productService.searchProductsByCategory(category).subscribe(data => {
+      this.products = data;
+     
+    })
+ 
+}
 
+
+ 
   
 
 }

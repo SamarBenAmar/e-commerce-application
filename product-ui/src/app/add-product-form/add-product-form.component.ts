@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Product } from '../product/product';
+import { Product } from '../product-list/product';
 import { ProductService } from '../product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-form',
@@ -13,6 +14,7 @@ export class AddProductFormComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
+    
   }
 
   myForm = new FormGroup ({
@@ -27,16 +29,7 @@ export class AddProductFormComponent implements OnInit {
 
   products : Product[] = [];
 
-  product : Product = {
-    id: '',
-    name: '',
-    brand: '',
-    category: '',
-    price: 0,
-    quantity: 0,
-    pictureUrl: '',
-    description: ''
-  }
+  product : Product = new Product('','','',0,0,'','');
 
   onSubmit(product: Product){
     this.productService.saveProduct(product).subscribe(data => {
@@ -47,10 +40,12 @@ export class AddProductFormComponent implements OnInit {
       product.quantity = this.myForm.value.quantity;
       product.pictureUrl = this.myForm.value.pictureUrl;
       product.description = this.myForm.value.description;
+      this.products.push(product);
       data = product;
       console.log(data);
     })
     console.log("Form Submitted !");
+  
   }
 
 }

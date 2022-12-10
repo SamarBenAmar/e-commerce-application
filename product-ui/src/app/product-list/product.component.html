@@ -1,0 +1,43 @@
+
+
+<h1 id="title">Catalog</h1>
+
+<form class="navbar-form"  (ngSubmit)="searchProductsByCategory(search.value)">
+  <div class="form-group"> 
+    <input type="text" #search class="form-control" placeholder="Search"  style="width:400px;" name="search">
+  </div>  
+  <button id="btn-view" type="submit" class="btn btn-default" style="width:100px" value="Search">
+  <span class="glyphicon glyphicon-search"></span> Search
+  </button>
+</form> 
+
+<div class="main-container">
+    <ul id="main-container-ul"> 
+    <li id="main-container-ul-li" *ngFor="let product of products">
+        
+    
+                <a href="#"><img id="imgItem" src={{product.pictureUrl}} alt=""></a>
+                
+                <footer id="main-container-footer">
+                    <a href="#">
+                      <strong id="main-container-footer-strong">{{product.name}}</strong>
+                      <p id="main-container-footer-p">{{product.brand}}</p>
+                      <br>
+                      <strong id="main-container-footer-strong-price">$ {{product.price}}</strong>
+                      <br>
+                      <p id="main-container-footer-p">{{product.quantity}}</p>
+                    </a>
+
+                    <div id="div-btn-view-cart">
+                    <a id="btn-view" type="button" class="btn btn-success" href="#">View</a>
+                    <a id="btn-cart" type="button" class="btn btn-primary" href="#">Add to Cart</a>
+                    </div>                    
+                
+                
+                    
+                   
+                
+            </footer>
+    </li>
+</ul> 
+</div>

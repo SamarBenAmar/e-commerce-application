@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Product } from '../product-list/product';
 import { ProductService } from '../product.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product-form',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class AddProductFormComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router : Router) { }
 
   ngOnInit(): void {
     
@@ -45,7 +45,7 @@ export class AddProductFormComponent implements OnInit {
       console.log(data);
     })
     console.log("Form Submitted !");
-  
+    this.router.navigate(['/home']);
   }
 
 }

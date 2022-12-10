@@ -8,7 +8,9 @@ import { SearchProductListComponent } from './search-product-list/search-product
 const routes: Routes = [
   
   {path:'', component: HomeComponent },
-  { path: 'search-product-list/:category', component: SearchProductListComponent }
+  { path: 'search-product-list/:category', component: SearchProductListComponent },
+  { path: 'home', component: HomeComponent },
+
   
 ];
 

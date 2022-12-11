@@ -26,6 +26,16 @@ export class ProductService {
     });
   }
 
+  fullTextSearchProductsByCategoryPages(category: string, page: number, size : number) : Observable<Product[]> {
+    let params = new HttpParams();
+    params = params.append('criteria', category);
+    params = params.append('page', page);
+    params = params.append('size', size);
+    return this.http.get<Product[]>(`${this.productsUrl}/full-text-search/pages`, {
+      params
+    });
+  }
+
   /*searchProductsByCategory(category: string): Observable<Product[]> {
     let params = new HttpParams();
     params = params.append('category', category);

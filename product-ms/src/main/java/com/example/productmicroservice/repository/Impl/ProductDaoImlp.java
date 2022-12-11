@@ -97,5 +97,20 @@ public class ProductDaoImlp implements IProductDao {
         }
         return result;
     }
+
+    @Override
+    public Page<Product> fullTextSearchProductsByCategoryPages(String category, Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+        TextCriteria criteria = TextCriteria
+                                    .forDefaultLanguage()
+                                    .matching(category);
+        
+        Query query = TextQuery.queryText(criteria);
+        query.with(pageable);
+        query.addCriteria(Criteria.where("quantity").gt(0));
+
+        return PageableExecutionUtils.getPage(mongoTemplate.find(query, Product.class), pageable, () -> 
+        mongoTemplate.count(query.skip(0).limit(0), Product.class));
+    }
     
 }

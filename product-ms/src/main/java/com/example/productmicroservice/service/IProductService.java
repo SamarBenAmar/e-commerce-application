@@ -17,5 +17,7 @@ public interface IProductService {
     List<Product> getProductsByCategory(String category) throws IOException;
     Page<Product> getAllProductsPages(Integer page, Integer size) throws IOException;
     List<Product> fullTextSearchProductsByCategory(String category);
+    Page<Product> fullTextSearchProductsByCategoryPages(String category, Integer page, Integer size) throws IOException;
+
 
 }

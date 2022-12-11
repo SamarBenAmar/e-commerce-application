@@ -100,4 +100,11 @@ public class ProductServiceImpl implements IProductService{
 		return this.productDao.fullTextSearchProductsByCategory(category);
 	}
 
+	@Override
+	public Page<Product> fullTextSearchProductsByCategoryPages(String category, Integer page, Integer size)
+			throws IOException {
+				return this.productDao.fullTextSearchProductsByCategoryPages(category, page, size);
+			
+	}
+
 }

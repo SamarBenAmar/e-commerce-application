@@ -2,7 +2,7 @@
 <h1 id="title">Search Results - Category: {{category}}</h1>
 <div class="main-container" >
     <ul id="main-container-ul"> 
-        <li id="main-container-ul-li" *ngFor="let product of products " >
+        <li id="main-container-ul-li" *ngFor="let product of products | paginate: config " >
             <a href="#"><img id="imgItem" src={{product.pictureUrl}} alt=""></a>
             <footer id="main-container-footer">
                 <a href="#">
@@ -21,4 +21,6 @@
         </li>
     </ul> 
 </div>
+<hr>
+<div><pagination-controls (pageChange)="pageChanged($event)" class="text-center"></pagination-controls></div>
 

@@ -38,6 +38,11 @@ public class ProductController {
 		return productService.fullTextSearchProductsByCategory(criteria);
 	}
 
+	@GetMapping("/full-text-search/pages")
+	public List<Product> fullTextSearchProductsByCategoryPages(@RequestParam("criteria") String criteria, @RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{
+		return productService.fullTextSearchProductsByCategoryPages(criteria, page, size).getContent();
+	}
+
 
 	@GetMapping("/pages")
 	public ResponseEntity<List<Product>> getAllProductPages(@RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{

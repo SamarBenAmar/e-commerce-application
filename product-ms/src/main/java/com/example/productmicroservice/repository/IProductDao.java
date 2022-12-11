@@ -18,6 +18,8 @@ public interface IProductDao {
 
     public List<Product> fullTextSearchProductsByCategory(String category);
 
+    public Page<Product> fullTextSearchProductsByCategoryPages(String category, Integer page, Integer size);
+
    
     
 }

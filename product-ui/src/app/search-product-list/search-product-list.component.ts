@@ -21,7 +21,20 @@ export class SearchProductListComponent implements OnInit {
 
   products: Array<Product> = [];
 
+  productsPages: any = [];
+
+  config: any = {
+    itemsPerPage: 4,
+    currentPage: 1,
+    totalItems: this.products.length
+  };
+
   ngOnInit() {
+    this.searchProductsByCategory();
+    this.searchProductsByCategoryPages();
+  }
+
+  searchProductsByCategory(){
     this.querySubscribe = this.route.params.subscribe((params: Params) => {
       this.category = params['criteria'];
       this.productService.fullTextSearchProductsByCategory(this.category)
@@ -29,6 +42,23 @@ export class SearchProductListComponent implements OnInit {
           this.products = data;
         });
     });   
+  }
+
+  searchProductsByCategoryPages(){
+    this.querySubscribe = this.route.params.subscribe((params: Params) => {
+      this.category = params['criteria'];
+    this.productService.fullTextSearchProductsByCategoryPages(this.category, this.config.currentPage, this.config.itemsPerPage).subscribe( data => {
+      this.productsPages = data;
+      
+    }); 
+  });
+    this.config.totalItems = this.products.length;
+    console.log(this.config);
+
+  }
+
+  pageChanged(event: any){
+    this.config.currentPage = event;
   }
 
 }

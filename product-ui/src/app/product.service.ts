@@ -7,15 +7,23 @@ import { Product } from './product-list/product';
   providedIn: 'root'
 })
 export class ProductService {
+  
 
   private productsUrl = "http://localhost:8080/products";
-  private category = "";
-  searchPageSize = 3;
 
   constructor(private http: HttpClient) { }
 
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.productsUrl}`);
+  }
+
+  getAllProductsPages(page: number, size : number) : Observable<Product[]> {
+    let params = new HttpParams();
+    params = params.append('page', page);
+    params = params.append('size', size);
+    return this.http.get<Product[]>(`${this.productsUrl}/pages`, {
+      params
+    });
   }
 
   searchProductsByCategory(category: string): Observable<Product[]> {
@@ -29,9 +37,5 @@ export class ProductService {
   saveProduct(product : Product): Observable<Object> {
     return this.http.post<Product>(`${this.productsUrl}`,product);
   }
-
- 
-
-
   
 }

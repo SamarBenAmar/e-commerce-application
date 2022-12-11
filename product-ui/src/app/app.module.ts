@@ -13,13 +13,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchProductListComponent } from './search-product-list/search-product-list.component';
 import { HomeComponent } from './home/home.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     AddProductFormComponent,
-
     HeaderComponent,
       FooterComponent,
       SearchProductListComponent,
@@ -30,7 +30,8 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

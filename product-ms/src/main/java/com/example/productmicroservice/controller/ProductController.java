@@ -32,24 +32,22 @@ public class ProductController {
 	public ResponseEntity<List<Product>> getAllProduct() throws IOException{
 		return ResponseEntity.ok().body(productService.getAllProducts());
 	}
+
+	@GetMapping("/pages")
+	public ResponseEntity<List<Product>> getAllProductPages(@RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{
+		return ResponseEntity.ok().body(productService.getAllProductsPages(page, size).getContent());
+	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable String id) throws IOException{
 		return ResponseEntity.ok().body(productService.getProductById(id));
 	}
 
-    /*@GetMapping("/category/{category}")
-	public List<Product> getProductsByCategory(@PathVariable String category) throws IOException{
-		return productService.getProductsByCategory(category);
-	}*/
-
 	@GetMapping("/category")
 	public List<Product> getProductsByCategory(@RequestParam("category") String category) throws IOException{
 		return productService.getProductsByCategory(category);
 	}
 
-    
-	
 	@PostMapping
 	public ResponseEntity<Product> createProduct(@RequestBody Product product) throws IOException{
 		return ResponseEntity.ok().body(this.productService.createProduct(product));

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -86,8 +87,17 @@ public class ProductServiceImpl implements IProductService{
 
     @Override
     public List<Product> getProductsByCategory(String category) throws IOException {
-        // TODO Auto-generated method stub
         return this.productDao.getProductsByCategory(category);
     }
-		
+
+
+
+	@Override
+	public Page<Product> getAllProductsPages(Integer page, Integer size) throws IOException {
+		return this.productDao.getAllProductsPages(page, size);
+	}
+
+
+
+	
 	}

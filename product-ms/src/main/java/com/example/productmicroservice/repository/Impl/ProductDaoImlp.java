@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.support.PageableExecutionUtils;
 import org.springframework.stereotype.Repository;
 
 import com.example.productmicroservice.model.Product;
@@ -31,6 +35,7 @@ public class ProductDaoImlp implements IProductDao {
             }
         }
         return result;
+        
     }
 
     @Override
@@ -63,5 +68,14 @@ public class ProductDaoImlp implements IProductDao {
         return result;
     }
 
+    @Override
+    public Page<Product> getAllProductsPages(Integer page, Integer size) {
+        Pageable pageable = PageRequest.of(page, size);
+        Query query = new Query();
+        query.with(pageable);
+           
+        return PageableExecutionUtils.getPage(mongoTemplate.find(query, Product.class), pageable, () -> 
+        mongoTemplate.count(query.skip(0).limit(0), Product.class));
+    }
     
 }

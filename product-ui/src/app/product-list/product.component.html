@@ -1,38 +1,25 @@
-
-
 <h1 id="title">Catalog</h1>
 
-
-
 <div class="main-container">
-    <ul id="main-container-ul"> 
-    <li id="main-container-ul-li" *ngFor="let product of products">
-        
-    
-                <a href="#"><img id="imgItem" src={{product.pictureUrl}} alt=""></a>
-                
-                <footer id="main-container-footer">
-                    <a href="#">
-                      <strong id="main-container-footer-strong">{{product.name}}</strong>
-                      <p id="main-container-footer-p">{{product.brand}}</p>
-                      <br>
-                      <strong id="main-container-footer-strong-price">$ {{product.price}}</strong>
-                      <br>
-
-                      <p *ngIf="product.quantity != 0" id="main-container-footer-p">{{product.quantity}}</p>
-                      <p *ngIf="product.quantity == 0" id="main-container-footer-p" style="color: red;">Out Of Stock</p>
-                    </a>
-
-                    <div id="div-btn-view-cart">
-                    <a id="btn-view" type="button" class="btn btn-success" href="#">View</a>
-                    <a id="btn-cart" type="button" class="btn btn-primary" href="#">Add to Cart</a>
-                    </div>                    
-                
-                
-                    
-                   
-                
-            </footer>
+  <ul id="main-container-ul"> 
+    <li id="main-container-ul-li col-md-6" *ngFor="let product of products | paginate: config">
+      <a href="#"><img id="imgItem" src={{product.pictureUrl}} alt=""></a>
+      <footer id="main-container-footer">
+        <a href="#">
+          <strong id="main-container-footer-strong">{{product.name}}</strong>
+          <p id="main-container-footer-p">{{product.brand}}</p>
+          <br>
+          <strong id="main-container-footer-strong-price">$ {{product.price}}</strong>
+          <br>
+          <p *ngIf="product.quantity != 0" id="main-container-footer-p">{{product.quantity}}</p>
+          <p *ngIf="product.quantity == 0" id="main-container-footer-p" style="color: red;">Out Of Stock</p>
+        </a>
+        <div id="div-btn-view-cart">
+          <a id="btn-view" type="button" class="btn btn-success" href="#">View</a>
+          <a id="btn-cart" type="button" class="btn btn-primary" href="#">Add to Cart</a>
+        </div>                    
+      </footer>
     </li>
-</ul> 
+  </ul> 
 </div>
+<div class="row"><pagination-controls (pageChange)="pageChanged($event)" class="text-center"></pagination-controls></div>

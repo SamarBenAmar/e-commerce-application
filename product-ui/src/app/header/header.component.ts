@@ -8,6 +8,7 @@ import { ProductService } from '../product.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
 
   constructor(private productService :  ProductService, private router : Router) { }
@@ -15,24 +16,14 @@ export class HeaderComponent implements OnInit {
   products : Product[] =[]
 
   ngOnInit(): void {
+  
   }
 
-  /*searchProductsByCategory(category: string){
-    this.productService.searchProductsByCategory(category).subscribe(data => {
-      this.products = data;
-    })
-  }*/
-
-  searchProduct(search: string) {
-    if (search.trim().length) {
-      this.productService.searchProductsByCategory(search).subscribe(data => {
-        this.products = data;
-
-      })
-      const url = '/search-product-list/'+search;
+  searchProduct(search: HTMLInputElement) {
+    if (search.value.trim().length) {
+      const url = '/search-product-list/' + search.value;
       this.router.navigate([url]);
-      console.log("hiiii !!!")
     }
-    
   }
+
 }

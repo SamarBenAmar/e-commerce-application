@@ -3,6 +3,8 @@ package com.example.productmicroservice.service;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.example.productmicroservice.model.Product;
 
 public interface IProductService {
@@ -15,5 +17,8 @@ public interface IProductService {
 	void deleteProductById(String productId) throws IOException;
 
     List<Product> getProductsByCategory(String category) throws IOException;
+    Page<Product> getAllProductsPages(Integer page, Integer size) throws IOException;
+
+ 
     
 }

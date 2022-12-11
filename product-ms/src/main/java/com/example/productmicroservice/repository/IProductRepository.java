@@ -9,4 +9,6 @@ import com.example.productmicroservice.model.Product;
 public interface IProductRepository extends MongoRepository<Product, String> {
 
 
+
+
 }

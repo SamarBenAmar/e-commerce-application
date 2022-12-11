@@ -18,7 +18,9 @@
                       <br>
                       <strong id="main-container-footer-strong-price">$ {{product.price}}</strong>
                       <br>
-                      <p id="main-container-footer-p">{{product.quantity}}</p>
+
+                      <p *ngIf="product.quantity != 0" id="main-container-footer-p">{{product.quantity}}</p>
+                      <p *ngIf="product.quantity == 0" id="main-container-footer-p" style="color: red;">Out Of Stock</p>
                     </a>
 
                     <div id="div-btn-view-cart">

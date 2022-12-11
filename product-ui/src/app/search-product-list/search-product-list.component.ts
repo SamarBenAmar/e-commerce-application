@@ -23,8 +23,8 @@ export class SearchProductListComponent implements OnInit {
 
   ngOnInit() {
     this.querySubscribe = this.route.params.subscribe((params: Params) => {
-      this.category = params['category'];
-      this.productService.searchProductsByCategory(this.category)
+      this.category = params['criteria'];
+      this.productService.fullTextSearchProductsByCategory(this.category)
         .subscribe(data => {
           this.products = data;
         });

@@ -95,4 +95,9 @@ public class ProductServiceImpl implements IProductService{
 		return this.productDao.getAllProductsPages(page, size);
 	}
 
+	@Override
+	public List<Product> fullTextSearchProductsByCategory(String category) {
+		return this.productDao.fullTextSearchProductsByCategory(category);
+	}
+
 }

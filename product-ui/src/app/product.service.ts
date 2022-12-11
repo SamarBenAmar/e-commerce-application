@@ -26,10 +26,18 @@ export class ProductService {
     });
   }
 
-  searchProductsByCategory(category: string): Observable<Product[]> {
+  /*searchProductsByCategory(category: string): Observable<Product[]> {
     let params = new HttpParams();
     params = params.append('category', category);
     return this.http.get<Product[]>(`${this.productsUrl}/category`,{
+      params
+    });
+  }*/
+
+  fullTextSearchProductsByCategory(category: string): Observable<Product[]> {
+    let params = new HttpParams();
+    params = params.append('criteria', category);
+    return this.http.get<Product[]>(`${this.productsUrl}/full-text-search`,{
       params
     });
   }

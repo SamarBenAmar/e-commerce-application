@@ -16,6 +16,8 @@ public interface IProductDao {
 
     public Page<Product> getAllProductsPages(Integer page, Integer size);
 
+    public List<Product> fullTextSearchProductsByCategory(String category);
+
    
     
 }

@@ -13,8 +13,6 @@ export class HeaderComponent implements OnInit {
 
   constructor(private productService :  ProductService, private router : Router) { }
 
-  products : Product[] =[]
-
   ngOnInit(): void {
   
   }

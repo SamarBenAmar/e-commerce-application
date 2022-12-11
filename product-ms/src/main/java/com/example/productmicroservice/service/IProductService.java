@@ -16,5 +16,6 @@ public interface IProductService {
 	void deleteProductById(String productId) throws IOException;
     List<Product> getProductsByCategory(String category) throws IOException;
     Page<Product> getAllProductsPages(Integer page, Integer size) throws IOException;
-	
+    List<Product> fullTextSearchProductsByCategory(String category);
+
 }

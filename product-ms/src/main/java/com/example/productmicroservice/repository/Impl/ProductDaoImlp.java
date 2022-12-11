@@ -35,7 +35,7 @@ public class ProductDaoImlp implements IProductDao {
             }
         }
         return result;
-        
+
     }
 
     @Override
@@ -73,7 +73,6 @@ public class ProductDaoImlp implements IProductDao {
         Pageable pageable = PageRequest.of(page, size);
         Query query = new Query();
         query.with(pageable);
-           
         return PageableExecutionUtils.getPage(mongoTemplate.find(query, Product.class), pageable, () -> 
         mongoTemplate.count(query.skip(0).limit(0), Product.class));
     }

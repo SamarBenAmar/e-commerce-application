@@ -8,7 +8,4 @@ import com.example.productmicroservice.model.Product;
 @Repository
 public interface IProductRepository extends MongoRepository<Product, String> {
 
-
-
-
 }

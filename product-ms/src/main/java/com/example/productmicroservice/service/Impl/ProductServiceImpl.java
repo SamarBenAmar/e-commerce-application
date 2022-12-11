@@ -30,8 +30,6 @@ public class ProductServiceImpl implements IProductService{
 		return productRepository.save(product);
 	}
 
-	
-	
 	@Override
 	public Product updateProduct(Product product) throws IOException {
 		Optional<Product> productDb = this.productRepository.findById(product.getId());
@@ -97,7 +95,4 @@ public class ProductServiceImpl implements IProductService{
 		return this.productDao.getAllProductsPages(page, size);
 	}
 
-
-
-	
-	}
+}

@@ -32,31 +32,10 @@ public class ProductController {
 	public ResponseEntity<List<Product>> getAllProduct() throws IOException{
 		return ResponseEntity.ok().body(productService.getAllProducts());
 	}
-
-	@GetMapping("/full-text-search")
-	public List<Product> fullTextSearchProductsByCategory(@RequestParam("criteria") String criteria) throws IOException{
-		return productService.fullTextSearchProductsByCategory(criteria);
-	}
-
-	@GetMapping("/full-text-search/pages")
-	public List<Product> fullTextSearchProductsByCategoryPages(@RequestParam("criteria") String criteria, @RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{
-		return productService.fullTextSearchProductsByCategoryPages(criteria, page, size).getContent();
-	}
-
-
-	@GetMapping("/pages")
-	public ResponseEntity<List<Product>> getAllProductPages(@RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{
-		return ResponseEntity.ok().body(productService.getAllProductsPages(page, size).getContent());
-	}
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> getProductById(@PathVariable String id) throws IOException{
 		return ResponseEntity.ok().body(productService.getProductById(id));
-	}
-
-	@GetMapping("/category")
-	public List<Product> getProductsByCategory(@RequestParam("category") String category) throws IOException{
-		return productService.getProductsByCategory(category);
 	}
 
 	@PostMapping
@@ -74,5 +53,25 @@ public class ProductController {
 	public HttpStatus deleteProduct(@PathVariable String id) throws IOException{
 		this.productService.deleteProductById(id);
 		return HttpStatus.OK;
+	}
+
+	@GetMapping("/category")
+	public List<Product> getProductsByCategory(@RequestParam("category") String category) throws IOException{
+		return productService.getProductsByCategory(category);
+	}
+
+	@GetMapping("/full-text-search")
+	public List<Product> fullTextSearchProductsByCategory(@RequestParam("criteria") String criteria) throws IOException{
+		return productService.fullTextSearchProductsByCategory(criteria);
+	}
+
+	@GetMapping("/full-text-search/pages")
+	public List<Product> fullTextSearchProductsByCategoryPages(@RequestParam("criteria") String criteria, @RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{
+		return productService.fullTextSearchProductsByCategoryPages(criteria, page, size).getContent();
+	}
+
+	@GetMapping("/pages")
+	public ResponseEntity<List<Product>> getAllProductPages(@RequestParam("page") Integer page, @RequestParam("size") Integer size) throws IOException{
+		return ResponseEntity.ok().body(productService.getAllProductsPages(page, size).getContent());
 	}
 }
